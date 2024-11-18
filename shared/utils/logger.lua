@@ -22,7 +22,7 @@ local function logMessage(level, module, message)
 
     local timestamp = IsDuplicityVersion() and os.date("%d/%m/%Y %H:%M:%S") or "CLIENT"
     local levelColor = logLevels[level].color or "^7LOG"
-    local m = "[" .. timestamp .. " : " .. (module or "Naara") .. "] " .. levelColor .. "" .. message .. "^7"
+    local m = "[" .. timestamp .. " : " .. (module or GetConvar("naara:serverName", "Unknown")) .. "] " .. levelColor .. "" .. message .. "^7"
 
     print(m)
 end
