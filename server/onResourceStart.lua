@@ -5,6 +5,7 @@ AddEventHandler("onResourceStart", function(resourceName)
         print("^1Please do not rename the resource and leave it as 'naara-gamemode'^7")
         print("^1Please do not rename the resource and leave it as 'naara-gamemode'^7")
         print("^1Please do not rename the resource and leave it as 'naara-gamemode'^7")
+        Wait(5000)
         return os.exit()
     end
 
