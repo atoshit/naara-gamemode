@@ -18,3 +18,5 @@
 > - Et bien d'autres fonctionnalités exclusives en cours de développement.
 >
 > Naara PVP Gamemode a été pensé pour les amateurs de compétition et d'action sur FiveM, avec un souci constant d'innovation et de qualité. Ce projet ambitionne de devenir une référence dans l'univers PVP de la plateforme, tout en repoussant les limites de ce qui est > possible sur FiveM.
+
+---
