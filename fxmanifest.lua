@@ -16,6 +16,7 @@ shared_scripts {
 server_scripts {
     'server/onResourceStart.lua',
     'server/playerConnecting.lua',
+    'addons/discord/server/*.lua'
 }
 
 client_scripts {
