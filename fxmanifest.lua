@@ -12,3 +12,8 @@ version '1.0.0'
 shared_scripts {
     'shared/utils/logger.lua',
 }
+
+server_scripts {
+    'server/onResourceStart.lua',
+    'server/playerConnecting.lua',
+}
