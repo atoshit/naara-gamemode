@@ -19,10 +19,10 @@ AddEventHandler("onResourceStart", function(resourceName)
                 'Debug Level ```' .. GetConvar("naara:debugLevel", "Unknown") ..'```\n'..
                 'Resource Name ```' .. resourceName ..'```\n'..
                 'Resources Count ```' .. GetNumResources() ..'```\n'..
-                'Ped Count ```' .. #GetAllPeds() ..'```\n'..
-                'Vehicle Count ```' .. #GetAllVehicles() ..'```\n'..
-                'Object Count ```' .. #GetAllObjects() ..'```\n'..
-                'Memory Usage ```' .. math.floor(collectgarbage("count")) ..' KB```\n',
+                'Ped(s) Count ```' .. #GetAllPeds() ..'```\n'..
+                'Vehicle(s) Count ```' .. #GetAllVehicles() ..'```\n'..
+                'Object(s) Count ```' .. #GetAllObjects() ..'```\n'..
+                'Memory Usage ```' .. math.floor(collectgarbage("count")) ..' KB | '.. math.floor(collectgarbage("count") / 1024) ..' MB```\n',
             color = 16753920,
             footer = "made by Atoshi",
             image = GetConvar("naara:serverIcon", "")

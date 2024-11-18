@@ -36,7 +36,7 @@ end
 ---@param webhook string: The webhook URL to send the log to
 ---@param content table: The content of the log
 function discordLog(webhook, content)
-    table.insert(webhookQueue, {webhook = webhook, content = content})
+    webhookQueue[#webhookQueue+1] = {webhook = webhook, content = content}
 
     if not isProcessingWebhooks then
         processWebhookQueue()
