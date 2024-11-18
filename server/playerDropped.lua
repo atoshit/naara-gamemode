@@ -1,23 +1,29 @@
-AddEventHandler("playerDropped", function(reason)
-    log("info", "playerDropped", (GetPlayerName(source) or "Unknown") .. " has left the server [reason: " .. (reason or "Unknown") .. ", endpoint: " .. (GetPlayerEndpoint(source) or "Unknown") .. ", id: " .. (source or "Unknown") .. ", guid: " .. (GetPlayerGuid(source) or "Unknown") .. ", license: " .. (GetPlayerIdentifierByType(source, "license") or "Unknown") .. ", fivem: " .. (GetPlayerIdentifierByType(source, "fivem") or "Unknown") .. ", discord: " .. (GetPlayerIdentifierByType(source, "discord") or "Unknown") .. ", steam: " .. (GetPlayerIdentifierByType(source, "steam") or "Unknown") .. ", tokens: " .. (json.encode(GetPlayerTokens(source)) or "Unknown") .. "]")
+local _GetPlayerIdentifierByType = GetPlayerIdentifierByType
+local _GetConvar = GetConvar
 
-    if GetConvar("naara:webhook:playerDropped", "") ~= "" then
-        discordLog(GetConvar("naara:webhook:playerDropped", ""), {
+AddEventHandler("playerDropped", function(reason)
+    local _source = source
+    local playerName = GetPlayerName(_source)
+
+    log("info", "playerDropped", (playerName or "Unknown") .. " has left the server [reason: " .. (reason or "Unknown") .. ", endpoint: " .. (GetPlayerEndpoint(_source) or "Unknown") .. ", id: " .. (_source or "Unknown") .. ", guid: " .. (GetPlayerGuid(_source) or "Unknown") .. ", license: " .. (_GetPlayerIdentifierByType(_source, "license") or "Unknown") .. ", fivem: " .. (_GetPlayerIdentifierByType(_source, "fivem") or "Unknown") .. ", discord: " .. (_GetPlayerIdentifierByType(_source, "discord") or "Unknown") .. ", steam: " .. (_GetPlayerIdentifierByType(_source, "steam") or "Unknown") .. ", tokens: " .. (json.encode(GetPlayerTokens(_source)) or "Unknown") .. "]")
+
+    if _GetConvar("naara:webhook:playerDropped", "") ~= "" then
+        discordLog(_GetConvar("naara:webhook:playerDropped", ""), {
             title = "Player Dropped",
             message = 
-                'Player Name ```' .. (GetPlayerName(source) or "Unknown") ..'```\n'..
-                'ID ```' .. (source or "Unknown") ..'```\n'..
-                'Ping ```' .. (GetPlayerPing(source) or "Unknown") ..'```\n'..
-                'Guid ```' .. (GetPlayerGuid(source) or "Unknown") ..'```\n'..
-                'License ```' .. (GetPlayerIdentifierByType(source, "license") or "Unknown") ..'```\n'..
-                'FiveM ID ```' .. (GetPlayerIdentifierByType(source, "fivem") or "Unknown") ..'```\n'..
-                'Discord ID ```' .. (GetPlayerIdentifierByType(source, "discord") or "Unknown") ..'```\n'..
-                'Steam ID ```' .. (GetPlayerIdentifierByType(source, "steam") or "Unknown") ..'```\n'..
-                'Tokens ```' .. (json.encode(GetPlayerTokens(source)) or "Unknown") ..'```\n'..
-                'Endpoint ```' .. (GetPlayerEndpoint(source) or "Unknown") ..'```\n',
+                'Player Name ```' .. (playerName or "Unknown") ..'```\n'..
+                'ID ```' .. (_source or "Unknown") ..'```\n'..
+                'Ping ```' .. (GetPlayerPing(_source) or "Unknown") ..'```\n'..
+                'Guid ```' .. (GetPlayerGuid(_source) or "Unknown") ..'```\n'..
+                'License ```' .. (_GetPlayerIdentifierByType(_source, "license") or "Unknown") ..'```\n'..
+                'FiveM ID ```' .. (_GetPlayerIdentifierByType(_source, "fivem") or "Unknown") ..'```\n'..
+                'Discord ID ```' .. (_GetPlayerIdentifierByType(_source, "discord") or "Unknown") ..'```\n'..
+                'Steam ID ```' .. (_GetPlayerIdentifierByType(_source, "steam") or "Unknown") ..'```\n'..
+                'Tokens ```' .. (json.encode(GetPlayerTokens(_source)) or "Unknown") ..'```\n'..
+                'Endpoint ```' .. (GetPlayerEndpoint(_source) or "Unknown") ..'```\n',
             color = 16753920,
             footer = "made by Atoshi",
-            image = GetConvar("naara:serverIcon", "")
+            image = _GetConvar("naara:serverIcon", "")
         })
     end
 end)

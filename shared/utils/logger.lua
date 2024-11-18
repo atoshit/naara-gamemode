@@ -46,7 +46,7 @@ end
 --- @param module string: Module name
 --- @param message string: Message to log
 function log(level, module, message)
-    local debugLevel <const> = tonumber(GetConvar("naara:debugLevel"))
+    local debugLevel <const> = GetConvarInt("naara:debugLevel", 2)
 
     if debugLevel == 0 or logLevels[level].debugLevel > debugLevel then
         return
