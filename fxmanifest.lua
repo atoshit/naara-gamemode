@@ -17,3 +17,7 @@ server_scripts {
     'server/onResourceStart.lua',
     'server/playerConnecting.lua',
 }
+
+client_scripts {
+    'addons/discord/client/*.lua'
+}
