@@ -11,6 +11,16 @@ local function openRegistrationCard(tempId, d, callback)
     end)
 end
 
+local function openLoginCard(tempId, d, callback)
+    local c <const> = cards.loginCard
+
+    d.presentCard(c, function(action)
+        if action.action == "submitReturnButton" then
+            callback(tempId, d)
+        end
+    end)
+end
+
 ---@param tempId integer: Temporary Identifier
 ---@param d any: Defferals
 ---@param callback fun(tempId: integer, d: any): void
@@ -34,6 +44,8 @@ function openHomeCard(tempId, d)
             openInfoCard(tempId, d, openHomeCard)
         elseif action.action == "submitRegistrationButton" then
             openRegistrationCard(tempId, d, openHomeCard)
+        elseif action.action == "submitLoginButton" then
+            openLoginCard(tempId, d, openHomeCard)
         end
     end)
 end

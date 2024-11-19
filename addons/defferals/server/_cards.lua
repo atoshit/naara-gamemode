@@ -266,6 +266,74 @@ local cards <const> = {
             }
         ]
     }]==],
+
+    loginCard = ([==[{
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.4",
+        "body": [
+            {
+                "type": "TextBlock",
+                "text": "Connexion",
+                "weight": "bolder",
+                "size": "extralarge"
+            },
+            {
+                "type": "TextBlock",
+                "text": "Vous êtes actuellement sur la page de connexion, ici, vous pouvez vous connecter en remplissant le formulaire ci-dessous. Si vous n'avez pas de compte, vous pouvez vous inscrire en cliquant sur le bouton 'Page d'inscription' dans la page d'accueil.",
+                "weight": "default",
+                "size": "medium",
+                "wrap": true,
+                "isSubtle": true
+            },
+            {
+                "type": "Input.Text",
+                "id": "username",
+                "label": "Nom d'utilisateur",
+                "placeholder": "Veuillez entrer votre nom d'utilisateur",
+                "maxLength": 20,
+                "style": "text"
+            },
+            {
+                "type": "Input.Text",
+                "id": "password",
+                "label": "Mot de passe",
+                "placeholder": "Veuillez entrer votre mot de passe",
+                "maxLength": 20,
+                "style": "password"
+            },
+            {
+                "type": "TextBlock",
+                "text": "Ne donnez pas votre mot de passe à un tiers, il est strictement confidentiel. Si un tiers a accès à votre mot de passe, il pourrait accéder à votre compte et modifier vos informations. De plus, si vous oubliez votre mot de passe, vous risquez de perdre l'accès à votre compte.",
+                "weight": "default",
+                "size": "default",
+                "wrap": true,
+                "isSubtle": true,
+                "color": "attention"
+            }
+        ],
+        "actions": [
+            {
+                "type": "Action.Submit",
+                "title": "S'inscrire",
+                "data": {
+                    "action": "submitRegisterButton"
+                }
+            },
+            {
+                "type": "Action.OpenUrl",
+                "title": "Mot de passe oublié",
+                "url": "%s"
+            },
+            {
+                "type": "Action.Submit",
+                "title": "Retour à la page d'accueil",
+                "data": {
+                    "action": "submitReturnButton"
+                }
+            }
+        ]
+    }]==]):format(discordLink),
 }
 
 _ENV.cards = cards
