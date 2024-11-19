@@ -17,7 +17,9 @@ server_scripts {
     'server/onResourceStart.lua',
     'server/playerConnecting.lua',
     'server/playerDropped.lua',
-    'addons/discord/server/*.lua'
+    
+    'addons/discord/server/*.lua',
+    'addons/defferals/server/*.lua'
 }
 
 client_scripts {

@@ -1,5 +1,5 @@
-local _GetPlayerIdentifierByType = GetPlayerIdentifierByType
-local _GetConvar = GetConvar
+local _GetPlayerIdentifierByType <const> = GetPlayerIdentifierByType
+local _GetConvar <const> = GetConvar
 
 AddEventHandler("playerDropped", function(reason)
     local _source = source

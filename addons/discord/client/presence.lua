@@ -1,3 +1,5 @@
+local _GetConvar <const> = GetConvar
+
 ---@class DiscordPresence
 ---@field private appId string: The Discord application ID
 ---@field private asset string: The asset to display
@@ -7,11 +9,11 @@
 ---@field private updateInterval number: The update interval in ms
 DiscordPresence = {
     private = {
-        appId = GetConvar("naara:discordAppId", ""),
-        asset = GetConvar("naara:presenceAsset", ""),
-        assetText = GetConvar("naara:presenceAssetText", ""),
-        buttonLabel = GetConvar("naara:presenceButtonLabel", ""),
-        buttonLink = GetConvar("naara:presenceButtonLink", ""),
+        appId = _GetConvar("naara:discordAppId", ""),
+        asset = _GetConvar("naara:presenceAsset", ""),
+        assetText = _GetConvar("naara:presenceAssetText", ""),
+        buttonLabel = _GetConvar("naara:presenceButtonLabel", ""),
+        buttonLink = _GetConvar("naara:presenceButtonLink", ""),
         updateInterval = GetConvarInt("naara:presenceUpdateInterval", 5000)
     }
 }

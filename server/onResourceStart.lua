@@ -1,12 +1,8 @@
-local _GetConvar = GetConvar
-local _print = print
+local _GetConvar <const> = GetConvar
 
 AddEventHandler("onResourceStart", function(resourceName)
     if resourceName ~= "naara-gamemode" then 
-        _print("^1Please do not rename the resource and leave it as 'naara-gamemode'^7")
-        _print("^1Please do not rename the resource and leave it as 'naara-gamemode'^7")
-        _print("^1Please do not rename the resource and leave it as 'naara-gamemode'^7")
-        _print("^1Please do not rename the resource and leave it as 'naara-gamemode'^7")
+        print("^1Please do not rename the resource and leave it as 'naara-gamemode'^7")
         Wait(5000)
         return os.exit()
     end
