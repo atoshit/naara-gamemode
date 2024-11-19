@@ -1,6 +1,6 @@
 <div align="center">
   <img 
-    src="https://cdn.discordapp.com/attachments/1238845782363476039/1307803962145247272/Naara_icone.png?ex=673cf45a&is=673ba2da&hm=d274cb4962438a8860b35dcf67d2caeca58c4a6da4daba447ff72e1c12fa5d7a&" 
+    src="https://cdn.discordapp.com/attachments/1224136171530092554/1308255090897059860/Nouveau_projet.png?ex=673d46ff&is=673bf57f&hm=1628a1d00db1088d7f151ced1ef1dcdeda254b17f253690074e870be289f4697&" 
     alt="logo"
     style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;">
 </div>
