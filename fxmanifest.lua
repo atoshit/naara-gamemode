@@ -15,9 +15,11 @@ shared_scripts {
 }
 
 server_scripts {
+    '@oxmysql/lib/MySQL.lua',
     'server/wrap/**/*.lua',
     'server/onResourceStart.lua',
     'addons/defferals/server/*.lua',
+    'server/class/player/playerObj.lua',
     'server/playerConnecting.lua',
     'server/playerDropped.lua',
     'server/commands.lua',
