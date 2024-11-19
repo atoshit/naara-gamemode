@@ -315,9 +315,9 @@ local cards <const> = {
         "actions": [
             {
                 "type": "Action.Submit",
-                "title": "S'inscrire",
+                "title": "Se connecter",
                 "data": {
-                    "action": "submitRegisterButton"
+                    "action": "submitLoginButton"
                 }
             },
             {
