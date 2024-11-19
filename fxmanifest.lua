@@ -10,10 +10,12 @@ description 'Naara PvP'
 version '1.0.0'
 
 shared_scripts {
-    'shared/utils/logger.lua',
+    'shared/utils/libs/*.lua',
+    'shared/utils/logger.lua'
 }
 
 server_scripts {
+    'server/wrap/**/*.lua',
     'server/onResourceStart.lua',
     'addons/defferals/server/*.lua',
     'server/playerConnecting.lua',

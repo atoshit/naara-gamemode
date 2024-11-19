@@ -1,3 +1,6 @@
+---@param tempId integer: Temporary Identifier
+---@param d any: Defferals
+---@param callback fun(tempId: integer, d: any): void
 local function openInfoCard(tempId, d, callback)
     local c <const> = cards.infoCard
 
@@ -8,6 +11,8 @@ local function openInfoCard(tempId, d, callback)
     end)
 end
 
+---@param tempId integer: Temporary Identifier
+---@param d any: Defferals
 function openHomeCard(tempId, d)
     local c <const> = cards.homeCard
 
