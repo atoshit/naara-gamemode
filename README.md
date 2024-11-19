@@ -1,8 +1,7 @@
 <div align="center">
   <img 
-    src="https://cdn.discordapp.com/attachments/1224136171530092554/1307868879304786022/351d478abe91033d5857934df0f00389.png?ex=673bdf4f&is=673a8dcf&hm=a9623e15be67a022d348003b1b6fc872e774648f79cd329fbcaf1b3bf5c23ad3&" 
+    src="https://cdn.discordapp.com/attachments/1224136171530092554/1308255090897059860/Nouveau_projet.png?ex=673d46ff&is=673bf57f&hm=1628a1d00db1088d7f151ced1ef1dcdeda254b17f253690074e870be289f4697&" 
     alt="logo"
-    style="border-radius: 50%; width: 150px; height: 150px; object-fit: cover;">
 </div>
 
 <h1 align="center">Naara PVP Gamemode</h1>
