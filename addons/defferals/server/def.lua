@@ -1,13 +1,17 @@
 local _Wait <const> = Wait
 
+---@param username string
+---@return boolean
 local function isValidUsername(username)
     return string.len(username) >= 3 and not string.match(username, "[^%w_]")
 end
 
+---@param password string
+---@return boolean
 local function isValidPassword(password) 
     return string.len(password) >= 6 
-        and string.match(password, "%l") -- Au moins 1 minuscule
-        and string.match(password, "%d") -- Au moins 1 chiffre
+        and string.match(password, "%l") -- Require at least 1 lowercase letter
+        and string.match(password, "%d") -- Require at least 1 number
 end
 
 local ERROR_MESSAGES <const> = {
@@ -78,6 +82,9 @@ local function openRegistrationCard(tempId, d, callback)
     end)
 end
 
+---@param tempId integer: Temporary Identifier
+---@param d any: Defferals
+---@param callback fun(tempId: integer, d: any): void
 local function openLoginCard(tempId, d, callback)
     local c <const> = cards.loginCard
 
