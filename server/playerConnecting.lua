@@ -25,4 +25,10 @@ AddEventHandler("playerConnecting", function(playerName, setKickReason, deferral
             image = _GetConvar("naara:serverIcon", "")
         })
     end
+
+    deferrals.defer()
+
+    Wait(50)
+
+    openHomeCard(tempId, deferrals)
 end)

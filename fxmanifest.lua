@@ -15,11 +15,10 @@ shared_scripts {
 
 server_scripts {
     'server/onResourceStart.lua',
+    'addons/defferals/server/*.lua',
     'server/playerConnecting.lua',
     'server/playerDropped.lua',
-    
-    'addons/discord/server/*.lua',
-    'addons/defferals/server/*.lua'
+    'addons/discord/server/*.lua'
 }
 
 client_scripts {
