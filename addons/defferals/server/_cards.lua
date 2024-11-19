@@ -195,6 +195,77 @@ local cards <const> = {
             }
         ]
     }]==]):format(serverName, serverName, serverName, tebexLink, discordLink, siteLink),
+
+    registrationCard = [==[{
+        "$schema": "http://adaptivecards.io/schemas/adaptive-card.json",
+        "type": "AdaptiveCard",
+        "version": "1.4",
+        "body": [
+            {
+                "type": "TextBlock",
+                "text": "Inscription",
+                "weight": "bolder",
+                "size": "extralarge"
+            },
+            {
+                "type": "TextBlock",
+                "text": "Vous êtes actuellement sur la page d'inscription, ici, vous pouvez vous inscrire en remplissant le formulaire ci-dessous. Si vous avez déjà un compte, vous pouvez vous connecter en cliquant sur le bouton 'Page de connexion' dans la page d'accueil. Les informations renseignées sont strictement confidentielles et ne seront utilisées que pour la gestion de votre compte.",
+                "weight": "default",
+                "size": "medium",
+                "wrap": true,
+                "isSubtle": true
+            },
+            {
+                "type": "Input.Text",
+                "id": "username",
+                "label": "Nom d'utilisateur",
+                "placeholder": "Veuillez entrer votre nom d'utilisateur",
+                "maxLength": 20,
+                "style": "text"
+            },
+            {
+                "type": "Input.Text",
+                "id": "password",
+                "label": "Mot de passe",
+                "placeholder": "Veuillez entrer votre mot de passe, minimum 6 caractères, une lettre et un chiffre",
+                "maxLength": 20,
+                "style": "password"
+            },
+            {
+                "type": "Input.Text",
+                "id": "passwordConfirm",
+                "label": "Confirmation du mot de passe",
+                "placeholder": "Veuillez confirmer votre mot de passe",
+                "maxLength": 20,
+                "style": "password"
+            },
+            {
+                "type": "TextBlock",
+                "text": "Ne donnez pas votre mot de passe à un tiers, il est strictement confidentiel. Si un tiers a accès à votre mot de passe, il pourrait accéder à votre compte et modifier vos informations. De plus, si vous oubliez votre mot de passe, vous risquez de perdre l'accès à votre compte.",
+                "weight": "default",
+                "size": "default",
+                "wrap": true,
+                "isSubtle": true,
+                "color": "attention"
+            }
+        ],
+        "actions": [
+            {
+                "type": "Action.Submit",
+                "title": "S'inscrire",
+                "data": {
+                    "action": "submitRegisterButton"
+                }
+            },
+            {
+                "type": "Action.Submit",
+                "title": "Retour à la page d'accueil",
+                "data": {
+                    "action": "submitReturnButton"
+                }
+            }
+        ]
+    }]==],
 }
 
 _ENV.cards = cards
