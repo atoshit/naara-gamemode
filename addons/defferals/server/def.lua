@@ -1,11 +1,56 @@
+local _Wait <const> = Wait
+
 ---@param tempId integer: Temporary Identifier
 ---@param d any: Defferals
 ---@param callback fun(tempId: integer, d: any): void
 local function openRegistrationCard(tempId, d, callback)
     local c <const> = cards.registrationCard
 
-    d.presentCard(c, function(action)
-        if action.action == "submitReturnButton" then
+    d.presentCard(c, function(data)
+        if data.action == "submitReturnButton" then
+            callback(tempId, d)
+        elseif data.action == "submitRegisterButton" then
+            local username = data?.username
+            local password = data?.password
+            local passwordConfirm = data?.passwordConfirm
+
+            if not username then
+                d.update("Veuillez entrer un nom d'utilisateur, veuillez patientez.")
+                _Wait(3500)
+                return openRegistrationCard(tempId, d, callback)
+            end
+
+            if not password then
+                d.update("Veuillez entrer un mot de passe, veuillez patientez.")
+                _Wait(3500)
+                return openRegistrationCard(tempId, d, callback)
+            end
+
+            if not passwordConfirm then
+                d.update("Veuillez confirmer votre mot de passe, veuillez patientez.")
+                _Wait(3500)
+                return openRegistrationCard(tempId, d, callback)
+            end
+
+            local isPasswordValid = string.len(password) >= 6 and string.match(password, "%a") and string.match(password, "%d")
+            if not isPasswordValid then
+                d.update("Le mot de passe doit contenir au moins 6 caractères, une lettre et un chiffre, veuillez patientez.")
+                _Wait(3500)
+                return openRegistrationCard(tempId, d, callback)
+            end
+
+            local isPasswordConfirmed = password == passwordConfirm
+            if not isPasswordConfirmed then
+                d.update("Les mots de passe ne correspondent pas, veuillez patientez.")
+                _Wait(3500)
+                return openRegistrationCard(tempId, d, callback)
+            end
+
+            print(username, password, passwordConfirm)
+            d.update("Inscription en cours, veuillez patientez.")
+            _Wait(2500)
+            d.update("Inscription réussie, retour à l'accueil.")
+            _Wait(2500)
             callback(tempId, d)
         end
     end)
@@ -14,8 +59,8 @@ end
 local function openLoginCard(tempId, d, callback)
     local c <const> = cards.loginCard
 
-    d.presentCard(c, function(action)
-        if action.action == "submitReturnButton" then
+    d.presentCard(c, function(data)
+        if data.action == "submitReturnButton" then
             callback(tempId, d)
         end
     end)
@@ -27,8 +72,8 @@ end
 local function openInfoCard(tempId, d, callback)
     local c <const> = cards.infoCard
 
-    d.presentCard(c, function(action) 
-        if action.action == "submitReturnButton" then
+    d.presentCard(c, function(data) 
+        if data.action == "submitReturnButton" then
             callback(tempId, d)
         end
     end)
@@ -39,12 +84,12 @@ end
 function openHomeCard(tempId, d)
     local c <const> = cards.homeCard
 
-    d.presentCard(c, function(action)
-        if action.action == "submitInfoButton" then
+    d.presentCard(c, function(data)
+        if data.action == "submitInfoButton" then
             openInfoCard(tempId, d, openHomeCard)
-        elseif action.action == "submitRegistrationButton" then
+        elseif data.action == "submitRegistrationButton" then
             openRegistrationCard(tempId, d, openHomeCard)
-        elseif action.action == "submitLoginButton" then
+        elseif data.action == "submitLoginButton" then
             openLoginCard(tempId, d, openHomeCard)
         end
     end)
