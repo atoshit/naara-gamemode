@@ -28,30 +28,5 @@ AddEventHandler("onResourceStart", function(resourceName)
             footer = "made by Atoshi",
             image = _GetConvar("naara:serverIcon", "")
         })
-
-        CreateThread(function()
-            while true do
-                Wait(300000) -- 5 minutes
-
-                discordLog(_GetConvar("naara:webhook:gamemodeRunning", ""), {
-                    title = "Gamemode Running",
-                    message = 
-                        'Server Name ```' .. _GetConvar("naara:serverName", "Unknown") ..'```\n'..
-                        'Server Game Build ```' .. _GetConvarInt("sv_enforceGameBuild", "Unknown") ..'```\n'..
-                        'Debug Level ```' .. _GetConvarInt("naara:debugLevel", "Unknown") ..'```\n'..
-                        'Slot(s) Count ```' .. _GetConvarInt("sv_maxclients", "Unknown") ..'```\n'..
-                        'Player(s) Count ```' .. #GetPlayers() ..'```\n'..
-                        'Resource Name ```' .. resourceName ..'```\n'..
-                        'Resource(s) Count ```' .. GetNumResources() ..'```\n'..
-                        'Ped(s) Count ```' .. #GetAllPeds() ..'```\n'..
-                        'Vehicle(s) Count ```' .. #GetAllVehicles() ..'```\n'..
-                        'Object(s) Count ```' .. #GetAllObjects() ..'```\n'..
-                        'Memory Usage ```' .. math.floor(collectgarbage("count")) ..' KB | '.. math.floor(collectgarbage("count") / 1024) ..' MB```\n',
-                    color = 16753920,
-                    footer = "made by Atoshi",
-                    image = _GetConvar("naara:serverIcon", "")
-                })
-            end
-        end)
     end
 end)

@@ -20,6 +20,7 @@ server_scripts {
     'addons/defferals/server/*.lua',
     'server/playerConnecting.lua',
     'server/playerDropped.lua',
+    'server/commands.lua',
     'addons/discord/server/*.lua'
 }
 
