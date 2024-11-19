@@ -66,7 +66,7 @@ local cards <const> = {
             },
             {
                 "type": "TextBlock",
-                "text": "Vous êtes actuellement sur la page d'informations de %s, ici, vous pouvez retrouver les informations suivantes : Discord, Fondateur, Développeur et des informations supplémentaires sur les modes de jeux de %s.",
+                "text": "Vous êtes actuellement sur la page d'informations de %s, ici, vous pouvez retrouver les informations suivantes : Lien de notre boutique, notre discord, notre site et des informations supplémentaires sur les activités de %s.",
                 "weight": "default",
                 "size": "medium",
                 "wrap": true,
@@ -140,6 +140,34 @@ local cards <const> = {
                         ]
                     }
                 ]
+            },
+            {
+                "type": "TextBlock",
+                "text": "Activités",
+                "weight": "default",
+                "size": "large"
+            },
+            {
+                "type": "TextBlock",
+                "text": "・ Monde complet dédié au PVP \n ・ Système de matchmaking avec système de rangs (Bronze, Silver, Gold, Diamond, Master, Challenger) \n ・ Battle Royale \n ・ PVP 2v2/4v4/6V6/8v8/10v10 \n ・ Tournois des meilleurs joueurs du serveur avec du cashprize \n ・ Convoie vs Convoie (25vs25)\n ・ Et pleins d'autres choses encore !",
+                "weight": "default",
+                "size": "default",
+                "isSubtle": true,
+                "wrap": true
+            },
+            {
+                "type": "TextBlock",
+                "text": "Informations supplémentaires",
+                "weight": "default",
+                "size": "large"
+            },
+            {
+                "type": "TextBlock",
+                "text": "%s est un serveur de PvP. Il est donc impératif de respecter les règles établies. En cas de non-respect, des sanctions pourront être appliquées, allant d'un simple avertissement à un bannissement définitif. De plus, si vous oubliez votre mot de passe, vous risquez de perdre l'accès à votre compte. Nous vous conseillons donc de le noter ou de le mémoriser soigneusement. En cas de bannissement ou de perte de compte, aucun remboursement pour les achats effectués en boutique ne pourra être accordé.",
+                "weight": "default",
+                "size": "default",
+                "wrap": true,
+                "isSubtle": true
             }
         ],
         "actions": [
@@ -166,7 +194,7 @@ local cards <const> = {
                 }
             }
         ]
-    }]==]):format(serverName, serverName, tebexLink, discordLink, siteLink),
+    }]==]):format(serverName, serverName, serverName, tebexLink, discordLink, siteLink),
 }
 
 _ENV.cards = cards
