@@ -23,7 +23,7 @@
 
 ---
 
-Configuration
+<h1 align="left">Configuration</h1>
 
 ```
 # Global
