@@ -16,7 +16,7 @@ shared_scripts {
 
 server_scripts {
     '@oxmysql/lib/MySQL.lua',
-    'server/request.lua',
+    'server/requests.lua',
     'server/wrap/**/*.lua',
     'server/onResourceStart.lua',
     'addons/defferals/server/*.lua',
