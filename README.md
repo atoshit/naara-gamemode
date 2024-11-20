@@ -1,6 +1,6 @@
 <div align="center">
   <img 
-    src="https://cdn.discordapp.com/attachments/1224136171530092554/1308255090897059860/Nouveau_projet.png" 
+    src="https://cdn.discordapp.com/attachments/1238845782363476039/1307803962145247272/Naara_icone.png?ex=673e45da&is=673cf45a&hm=cefe32486c971cbd80816e1208dec74271e81b53909828be8e31b88d97849792&" 
     alt="Logo de Naara" 
     width="400">
 </div>
