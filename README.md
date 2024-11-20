@@ -1,24 +1,54 @@
 <div align="center">
   <img 
-    src="https://cdn.discordapp.com/attachments/1224136171530092554/1308255090897059860/Nouveau_projet.png?ex=673d46ff&is=673bf57f&hm=1628a1d00db1088d7f151ced1ef1dcdeda254b17f253690074e870be289f4697&" 
-    alt="logo"
+    src="https://cdn.discordapp.com/attachments/1238845782363476039/1307803962145247272/Naara_icone.png?ex=673e45da&is=673cf45a&hm=cefe32486c971cbd80816e1208dec74271e81b53909828be8e31b88d97849792&" 
+    alt="Logo de Naara" 
+    width="200">
 </div>
 
-<h1 align="center">Naara PVP Gamemode</h1>
+# **Naara PVP Gamemode**
+
+Bienvenue dans le dépôt officiel du **Naara PVP Gamemode**, un projet unique et innovant pour la plateforme FiveM.
 
 ---
 
-<h3 align="center">Bienvenue dans le dépôt officiel du PVP Gamemode FiveM de Naara Network</h3>
+### 🎈 **Présentation**
+Le **Naara PVP Gamemode** est conçu pour offrir une expérience **PVP immersive** et compétitive. Ce projet repousse les limites de la plateforme FiveM grâce à une intégration optimisée avec [oxmysql](https://github.com/overextended/oxmysql) pour une gestion performante des bases de données.
 
-> Naara PVP Gamemode est un projet innovant conçu spécifiquement pour la plateforme FiveM, offrant une expérience unique et immersive orientée PVP. Ce gamemode s'appuie sur la puissante librairie [oxmysql](https://github.com/overextended/oxmysql) pour une gestion efficace et performante de la base de données, garantissant fluidité et stabilité.
->
-> L'objectif de Naara PVP Gamemode est d'introduire un concept inédit dans l'écosystème FiveM, permettant aux joueurs de plonger dans des modes de jeu compétitifs variés et captivants. Parmi les fonctionnalités phares, on retrouve :
->
-> - Un système de matchmaking avancé, permettant aux joueurs de s'affronter dans des parties équilibrées en fonction de leur niveau.
-> - Des tournois compétitifs, avec des classements dynamiques et des récompenses attractives pour les meilleurs participants.
-> - Un mode battle royale repensé, où stratégie et réflexes seront essentiels pour triompher.
-> - Et bien d'autres fonctionnalités exclusives en cours de développement.
->
-> Naara PVP Gamemode a été pensé pour les amateurs de compétition et d'action sur FiveM, avec un souci constant d'innovation et de qualité. Ce projet ambitionne de devenir une référence dans l'univers PVP de la plateforme, tout en repoussant les limites de ce qui est > possible sur FiveM.
+**Fonctionnalités principales :**
+- **Système de matchmaking avancé** : Affrontez des adversaires de votre niveau pour des parties équilibrées.
+- **Tournois compétitifs** : Classements dynamiques avec récompenses attractives.
+- **Mode battle royale revisité** : Mélange de stratégie et de réflexes pour survivre.
+- **Et bien plus** : De nouvelles fonctionnalités sont en cours de développement.
+
+**Pourquoi choisir Naara PVP Gamemode ?**
+Ce gamemode a été pensé pour les amateurs de compétition sur FiveM, combinant **qualité**, **innovation** et **fluidité** pour une expérience inégalée.
 
 ---
+
+## ⚙️ **Configuration**
+
+Voici les options de configuration pour adapter le gamemode à votre serveur :
+
+```bash
+# Configuration globale
+setr naara:serverName "Naara - PvP" # Nom du serveur
+setr naara:serverIcon "https://cdn.discordapp.com/attachments/1238845782363476039/1307803962145247272/Naara_icone.png" # Icône du serveur
+setr naara:serverBanner "https://cdn.discordapp.com/attachments/1224136171530092554/1308255090897059860/Nouveau_projet.png" # Bannière
+setr naara:siteLink "https://naara.fr" # Site web
+setr naara:tebexLink "https://naara.tebex.io" # Lien Tebex
+setr naara:debugLevel 2 # Niveau de débogage
+
+# Présence Discord
+setr naara:discordLink "https://discord.gg/NaaraNetwork" # Lien Discord
+setr naara:presenceUpdateInterval 5000 # Intervalle de mise à jour
+setr naara:discordAppId "1307913029769498644" # ID de l'application Discord
+setr naara:presenceAsset "naara" # Ressource visuelle
+setr naara:presenceAssetText "Developed by Atoshi" # Texte personnalisé
+setr naara:presenceButtonLabel "Github" # Bouton personnalisé
+setr naara:presenceButtonLink "https://github.com/atoshit/naara-gamemode" # Lien du bouton
+
+# Logs
+setr naara:webhook:gamemodeStart "https://discordapp.com/api/webhooks/..." # Début du gamemode
+setr naara:webhook:gamemodeRunning "https://discordapp.com/api/webhooks/..." # Gamemode actif
+setr naara:webhook:playerConnecting "https://discordapp.com/api/webhooks/..." # Connexion joueur
+setr naara:webhook:playerDropped "https://discordapp.com/api/webhooks/..." # Déconnexion joueur
