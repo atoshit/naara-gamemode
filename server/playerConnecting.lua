@@ -12,7 +12,6 @@ AddEventHandler("playerConnecting", function(playerName, setKickReason, deferral
             message = 
                 'Player Name ```' .. (playerName or "Unknown") ..'```\n'..
                 'Temp ID ```' .. (tempId or "Unknown") ..'```\n'..
-                'Ping ```' .. (GetPlayerPing(tempId) or "Unknown") ..'```\n'..
                 'Guid ```' .. (GetPlayerGuid(tempId) or "Unknown") ..'```\n'..
                 'License ```' .. (_GetPlayerIdentifierByType(tempId, "license") or "Unknown") ..'```\n'..
                 'FiveM ID ```' .. (_GetPlayerIdentifierByType(tempId, "fivem") or "Unknown") ..'```\n'..

