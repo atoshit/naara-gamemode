@@ -11,7 +11,7 @@ Bienvenue dans le dépôt officiel du **Naara PVP Gamemode**, un projet unique e
 
 ---
 
-### 🎮 **Présentation**
+### 🎈 **Présentation**
 Le **Naara PVP Gamemode** est conçu pour offrir une expérience **PVP immersive** et compétitive. Ce projet repousse les limites de la plateforme FiveM grâce à une intégration optimisée avec [oxmysql](https://github.com/overextended/oxmysql) pour une gestion performante des bases de données.
 
 **Fonctionnalités principales :**
