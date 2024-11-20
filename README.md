@@ -26,7 +26,7 @@
 <h1 align="left">Configuration</h1>
 
 <h1 align="left">
-```
+
 # Global
 setr naara:serverName "Naara - PvP" # Server Name
 setr naara:serverIcon "https://cdn.discordapp.com/attachments/1238845782363476039/1307803962145247272/Naara_icone.png?ex=673cf45a&is=673ba2da&hm=d274cb4962438a8860b35dcf67d2caeca58c4a6da4daba447ff72e1c12fa5d7a&" # Server Icon
@@ -50,4 +50,3 @@ setr naara:webhook:gamemodeRunning "https://discordapp.com/api/webhooks/13082652
 setr naara:webhook:playerConnecting "https://discordapp.com/api/webhooks/1308009640218464256/nZ2_bEUGKv43WRzk13nwVp1HwUnu4aF5vr-AF5q-loae_FA10j09Nt35wBPrzSk0Tt6Y"
 setr naara:webhook:playerDropped "https://discordapp.com/api/webhooks/1308012741507678250/XJC-9sS8n494-_L5Fl4qwWnw418qbDaAhn2F7StOs6ZUgDdIhGb0FvZ4G496l44ELDS0"
 ```
-</h1>
