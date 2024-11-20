@@ -25,8 +25,7 @@
 
 <h1 align="left">Configuration</h1>
 
-<h1 align="left">
-
+```
 # Global
 setr naara:serverName "Naara - PvP" # Server Name
 setr naara:serverIcon "https://cdn.discordapp.com/attachments/1238845782363476039/1307803962145247272/Naara_icone.png?ex=673cf45a&is=673ba2da&hm=d274cb4962438a8860b35dcf67d2caeca58c4a6da4daba447ff72e1c12fa5d7a&" # Server Icon
