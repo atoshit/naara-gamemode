@@ -38,6 +38,7 @@ function playerObject:getDatas()
     return self
 end
 
+--- Add Player Object
 ---@param playerId integer
 ---@param accountId integer
 ---@param data table<string, any>
@@ -53,6 +54,7 @@ function addPlayer(playerId, accountId, data)
     return false
 end
 
+--- Remove player Object
 ---@param playerId integer
 ---@return boolean
 function removePlayer(playerId)
@@ -63,6 +65,7 @@ function removePlayer(playerId)
     return true
 end
 
+--- Get player Object
 ---@param playerId integer
 ---@return playerObject?
 function getPlayer(playerId)
@@ -71,6 +74,7 @@ function getPlayer(playerId)
     return players[playerId]
 end
 
+--- Get all players Object
 ---@return table<integer, playerObject>
 function getPlayers()
     return players

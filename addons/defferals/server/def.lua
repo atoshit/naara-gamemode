@@ -117,6 +117,8 @@ local function openRegistrationCard(tempId, d, callback)
                 })
             end
 
+            log("info", "Defferals", "New account created with username " .. username)
+
             d.update("Inscription en cours, veuillez patienter.")
             _Wait(2500)
             d.update("Inscription réussie, retour à l'accueil.")
