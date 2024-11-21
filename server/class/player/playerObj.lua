@@ -23,6 +23,9 @@ function playerObject.create(playerId, accountId, data)
     
     self.id = playerId
     self.accountId = accountId
+    self.accountUsername = data.username or "Unknown"
+    self.accountPassword = data.password or "Unknown"
+    self.createdAt = data.createdAt or "Unknown"
     self.license = _GetPlayerIdentifierByType(playerId, "license") or "Unknown"
     self.endpoint = GetPlayerEndpoint(playerId) or "Unknown"
     self.guid = GetPlayerGuid(playerId) or "Unknown"
@@ -34,6 +37,8 @@ function playerObject.create(playerId, accountId, data)
     return self
 end
 
+--- Get player datas
+---@return playerObject
 function playerObject:getDatas()
     return self
 end
