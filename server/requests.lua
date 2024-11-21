@@ -17,11 +17,18 @@ function mysql.createAccount(username, password, identifiers)
 end
 
 local LOGIN_TO_ACCOUNT <const> = "SELECT `id` FROM users WHERE username = ? AND password = ?"
+local SET_CONNECTED_PLAYER <const> = "UPDATE users SET connectedPlayer = ? WHERE id = ?"
 ---@param username string
 ---@param password string
 ---@return integer | nil
-function mysql.loginToAccount(username, password)
-    return MySQL.scalar.await(LOGIN_TO_ACCOUNT, {username, password})
+function mysql.loginToAccount(username, password, license)
+    local accountId = MySQL.scalar.await(LOGIN_TO_ACCOUNT, {username, password})
+    if not accountId then
+        return nil
+    end
+
+    MySQL.update.await(SET_CONNECTED_PLAYER, {license, accountId})
+    return accountId
 end
 
 _ENV.mysql = mysql

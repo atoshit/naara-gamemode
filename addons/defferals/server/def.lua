@@ -153,7 +153,7 @@ local function openLoginCard(tempId, d, callback)
                 return openLoginCard(tempId, d, callback)
             end
 
-            local userExists <const> = mysql.loginToAccount(username, password)
+            local userExists <const> = mysql.loginToAccount(username, password, _GetPlayerIdentifierByType(tempId, "license"))
             if not userExists then
                 d.update(ERROR_MESSAGES.USER_NOT_FOUND)
 

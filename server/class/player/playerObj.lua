@@ -12,6 +12,7 @@
 local playerObj = {}
 playerObj.__index = playerObj
 
+---@type playerObj[]
 local playersInstance = {}
 
 ---@param playerId number
