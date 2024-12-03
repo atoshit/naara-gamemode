@@ -1,9 +1,5 @@
-<div align="center">
-  <img 
-    src="https://cdn.discordapp.com/attachments/1238845782363476039/1307803962145247272/Naara_icone.png?ex=673e45da&is=673cf45a&hm=cefe32486c971cbd80816e1208dec74271e81b53909828be8e31b88d97849792&" 
-    alt="Logo de Naara" 
-    width="200">
-</div>
+![Nouveau projet](https://github.com/user-attachments/assets/841343a7-dcfc-4343-8754-90a67ca3f4c5)
+
 
 # **Naara PVP Gamemode**
 
